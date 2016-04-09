@@ -84,7 +84,6 @@ router.route('/robots/:id')
     /* DESTROY */
 
     .delete(function(req, res, next) {
-
         var robot_id = req.params.id
         console.log("DELETING ROBOT #"+robot_id)
         res.redirect('/robots')
