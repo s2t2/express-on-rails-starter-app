@@ -43,8 +43,8 @@ router.get('/robots/:id', function(req, res, next) {
     var robot = robots.find(function(r){ return r.id == robot_id; });
     if (typeof(robot) != "object") {
         console.log("COULDN'T SHOW ROBOT #"+robot_id)
-        req.flash('error', "Couldn't find Robot #"+robot_id);
-        req.flash('error', "ERROR!");
+        req.flash('danger', "DANGER - Couldn't find Robot #"+robot_id);
+        req.flash('warning', "WARNING!");
         req.flash('info', "INFO!");
         req.flash('success', "SUCCESS!");
         res.redirect('/robots')
