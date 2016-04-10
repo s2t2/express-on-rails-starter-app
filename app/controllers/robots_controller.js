@@ -22,7 +22,7 @@ router.get('/robots', function(req, res, next) {
 router.post('/robots', function(req, res, next) {
     console.log("CAPTURING FORM DATA:", req.body)
     console.log("CREATE ROBOT")
-    req.flash('success', 'Created a Robot');
+    req.flash('success', 'Created a New Robot');
     res.redirect('/robots')
 });
 
