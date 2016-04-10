@@ -1,10 +1,10 @@
 <% if(locals.robot){ %>
-  <% var action = '/robots/' %>
-  <% var method = 'PUT' %>
+  <% var action = '/robots/'+robot.id+'/update' %>
+  <% var method = 'POST' %>
   <% var robot_name = robot.name %>
   <% var robot_description = robot.description %>
 <% } else { %>
-  <% var action = '/robots/new' %>
+  <% var action = '/robots/' %>
   <% var method = 'POST' %>
 <% }; %>
 
