@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session'); // ADDITION! enables session storage; required for flash messages
 var flash = require('connect-flash'); // ADDITION! enables flash messages
 var moment = require('moment-timezone'); // ADDITION! enables date string formatting
+var expressLayouts = require('express-ejs-layouts') // ADDITION! enables EJS layouts, including yield() and contentFor() methods.
 
 var home_routes = require('./app/controllers/home_controller'); // EDIT! recognizes the home controller file, app/controllers/home_controller. was: var routes = require('./routes/index');
 var robot_routes = require('./app/controllers/robots_controller'); // EDIT! recognizes the robots controller file, app/controllers/robots_controller. was: var users = require('./routes/users');
@@ -22,6 +23,7 @@ app.locals.title = "Robots App!" // ADDITION! set a common title for all EJS vie
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views')); // EDIT! recognizes view templates stored in the app/views directory. was: app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('layout', 'layouts/application'); // ADDITION! instructs the application to use a primary view layout, app/views/layouts/application.ejs.
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -40,7 +42,8 @@ app.use(session({
    saveUninitialized: true
  })); // ADDITION! configures session storage
 
-app.use(flash()); // ADDITION! enables the application to use the flash module
+app.use(flash()); // ADDITION! enables the application to use the flash module.
+app.use(expressLayouts) // ADDITION! enables the application to use the expressLayouts module.
 
 app.use(function (req, res, next) {
  res.locals.messages = require('express-messages')(req, res);
