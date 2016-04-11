@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -8,11 +7,17 @@ var bodyParser = require('body-parser');
 var session = require('express-session'); // ADDITION! enables session storage; required for flash messages
 var flash = require('connect-flash'); // ADDITION! enables flash messages
 var moment = require('moment-timezone'); // ADDITION! enables date string formatting
+// var knex = require("./db"); // PG PRODUCTION ADDITION! enables pg database connection
+// var knexSessionStore = require('connect-session-knex')(session); // PG PRODUCTION ADDITION! uses pg database for session storage because we can't use MemoryStore in production
 
 var home_routes = require('./app/controllers/home_controller'); // EDIT! recognizes the home controller file, app/controllers/home_controller. was: var routes = require('./routes/index');
 var robot_routes = require('./app/controllers/robots_controller'); // EDIT! recognizes the robots controller file, app/controllers/robots_controller. was: var users = require('./routes/users');
 
 var sessionStore = new session.MemoryStore; // ADDITION! the default memory store for sessions in the development environment
+//var sessionStore = new knexSessionStore({
+//    knex: knex, // use existing knex configuration
+//    tablename: 'sessions'
+//}); // // PG PRODUCTION EDIT! creates a table in the pg database to store session data. was: var sessionStore = new session.MemoryStore;
 
 var app = express();
 

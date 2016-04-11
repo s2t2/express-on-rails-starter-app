@@ -1,14 +1,9 @@
 <% if(locals.robot){ %>
-  <% var action = '/robots/'+robot.id+'/update' %>
-  <% var method = 'POST' %>
   <% var robot_name = robot.name %>
   <% var robot_description = robot.description %>
-<% } else { %>
-  <% var action = '/robots/' %>
-  <% var method = 'POST' %>
 <% }; %>
 
-<form class="form-horizontal" method="<%= method %>" action="<%= action %>">
+<form class="form-horizontal" method="POST" action="<%= locals.form_action %>">
   <div class="form-group">
     <label for="robotName" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
