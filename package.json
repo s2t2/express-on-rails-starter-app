@@ -2,16 +2,29 @@
   "name": "robots_app",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "5.9.1",
+    "npm": "3.7.3"
+  },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www",
+    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
+    "heroku-postbuild": "knex migrate:latest --knexfile db/config.js && knex seed:run --knexfile db/config.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
+    "connect-flash": "^0.1.1",
+    "connect-session-knex": "^1.0.22",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
+    "express-messages": "^1.0.0",
+    "express-session": "^1.13.0",
+    "knex": "^0.10.0",
+    "moment-timezone": "^0.5.3",
     "morgan": "~1.6.1",
+    "pg": "^4.5.3",
     "serve-favicon": "~2.3.0"
   }
 }
